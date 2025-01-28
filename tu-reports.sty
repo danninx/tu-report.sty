@@ -1,0 +1,71 @@
+\usepackage{fancyhdr}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc}
+\usepackage{lipsum}
+\usepackage{titling}
+\usepackage{tcolorbox}
+
+\geometry{
+   a4paper,
+   margin=1in,
+}
+
+\newcommand\authorname{FILL NAME}
+\newcommand\authorid{FILL STUDENT ID}
+\newcommand\theclass{FILL COURSE ID}
+\newcommand\labname{FILL LAB NAME}
+\newcommand\labgroup{FILL GROUP NUMBER}
+\newcommand\labpartners{FILL GROUP PARTNERS}
+\newcommand\labdate{FILL LAB DATE}
+\date{\today}
+
+% Page styles
+\renewcommand{\headrulewidth}{0pt}
+
+\setlength{\headheight}{42pt}
+\fancypagestyle{first}{
+	\fancyhf{}
+	\fancyhead[L]{\textbf{\theclass} \\ \textbf{Lab Date:} \labdate \\ \textbf{Report Date:} \thedate }
+\fancyhead[R]{\textbf{\authorname} \\ \textbf{Student ID:} \authorid \\ \textbf{Lab Group 3:} \labpartners}
+}
+\fancypagestyle{normal}{
+	\fancyhf{}
+	\fancyfoot[L]{{\authorname} - \theclass}
+}
+
+
+% Preset Infos
+\newcommand\LabHeader{
+	\begin{center}
+		\textbf{\labname}
+	\end{center}
+}
+
+\newcommand{\TemplateReminder}{
+	\begin{tcolorbox}[colback=red!5!white]
+
+		\subsection*{Before you turn in:}
+		\begin{enumerate}
+			\item Change the template title and relevant headers
+			\item Format the filename: \em{Last-Name\_Assignment\_v\#.pdf}
+			\item Check assignment requirements
+		\end{enumerate}
+	\end{tcolorbox}
+}
+
+\newcommand\QA[2]{
+	\begin{itemize}
+		\item \large{\em{#1}}\normalsize
+			\begin{itemize}
+				\item #2
+			\end{itemize}
+	\end{itemize}
+}
+
+\newcommand{\ReportPages}{
+	\thispagestyle{first}
+	\pagestyle{normal}
+	\pagenumbering{arabic}
+}
+
