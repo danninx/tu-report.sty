@@ -1,45 +1,122 @@
+\usepackage{amsmath}
+\usepackage{amssymb}
 \usepackage{fancyhdr}
+\usepackage{float}
 \usepackage{geometry}
 \usepackage{graphicx}
 \usepackage[utf8]{inputenc}
 \usepackage{lipsum}
+\usepackage{listing}
+\usepackage{microtype}
 \usepackage{titling}
 \usepackage{tcolorbox}
 
 \geometry{
-   a4paper,
-   margin=1in,
+	a4paper,
+	margin=1in,
+	includehead
 }
 
-\newcommand\authorname{FILL NAME}
-\newcommand\authorid{FILL STUDENT ID}
-\newcommand\theclass{FILL COURSE ID}
-\newcommand\labname{FILL LAB NAME}
-\newcommand\labgroup{FILL GROUP NUMBER}
-\newcommand\labpartners{FILL GROUP PARTNERS}
-\newcommand\labdate{FILL LAB DATE}
+% Commands run in .tex
+\newcommand{\authorfirst}[1]{
+	\renewcommand{\AuthorFirst}{#1}
+}
+\newcommand{\authorlast}[1]{
+	\renewcommand{\AuthorLast}{#1}
+}
+
+\newcommand{\authorid}[1]{
+	\renewcommand{\AuthorID}{#1}
+}
+
+\newcommand{\theclass}[2]{
+	\renewcommand\CourseID{#1}
+	\renewcommand\SectionID{#2}
+}
+
+\newcommand{\labname}[1]{
+	\renewcommand{\LabTitle}{#1}
+}
+
+\newcommand{\labgroup}[1]{
+	\renewcommand{\LabGroupNo}{#1}
+}
+\newcommand{\labpartners}[1]{
+	\renewcommand{\LabPartners}{#1}
+}
+\newcommand{\labdate}[1]{
+	\renewcommand{\LabDate}{#1}
+}
+
 \date{\today}
+
+
+% For extra header lines
+\newcommand{\leftextra}[1]{
+	\renewcommand{\LeftExtra}{#1}
+}
+
+\newcommand{\rightextra}[1]{
+	\renewcommand{\RightExtra}{#1}
+}
+
+% Renewing and formatting commands ()
+\newcommand{\AuthorFirst}{FIRST-NAME}
+\newcommand{\AuthorLast}{LAST-NAME}
+\newcommand{\AuthorName}{{\AuthorFirst} {\AuthorLast}}
+\newcommand{\AuthorID}{FILL STUDENT ID}
+\newcommand{\CourseID}{COURSE ID}
+\newcommand{\SectionID}{NUM}
+\newcommand{\CourseTitle}{\CourseID-\SectionID}
+
+\newcommand{\LabTitle}{FILL LAB NAME}
+
+\newcommand{\LabGroupFormat}{\LabGroupNo: \LabPartners}
+\newcommand{\LabGroupNo}{FILL GROUP NUMBER}
+\newcommand{\LabPartners}{FILL GROUP PARTNERS}
+\newcommand{\LabDate}{FILL LAB DATE}
+
+\newcommand{\LeftExtra}{}
+\newcommand{\RightExtra}{}
+
+% Recursive newlines
+\newcommand{\insertlines}[1]{
+	\RecNewline{#1}{}
+}
+
+\newcommand{\RecNewline}[2]{
+	\ifnum#1>0
+		#2\\\RecNewline{\numexpr#1-1}{#2}
+	\else
+		#2
+	\fi
+}
 
 % Page styles
 \renewcommand{\headrulewidth}{0pt}
 
-\setlength{\headheight}{42pt}
 \fancypagestyle{first}{
+	\setlength{\headheight}{58pt}
 	\fancyhf{}
-	\fancyhead[L]{\textbf{\theclass} \\ \textbf{Lab Date:} \labdate \\ \textbf{Report Date:} \thedate }
-\fancyhead[R]{\textbf{\authorname} \\ \textbf{Student ID:} \authorid \\ \textbf{Lab Group 3:} \labpartners}
+	\fancyhead[L]{\textbf{\CourseTitle} \\ \textbf{Lab Date:} \LabDate \\ \textbf{Report Date:} \thedate \LeftExtra}
+	\fancyhead[R]{\textbf{\AuthorName} \\ \textbf{Student ID:} \AuthorID \\ \textbf{Lab Group 3:} \LabPartners \RightExtra}
 }
 \fancypagestyle{normal}{
+	\setlength{\headheight}{0pt}
 	\fancyhf{}
-	\fancyfoot[L]{{\authorname} - \theclass}
+\fancyfoot[C]{\thepage}
 }
 
+% Auto float arguments
+\renewcommand*{\fps@figure}{!ht}
+\renewcommand*{\fps@table}{!ht}
 
 % Preset Infos
 \newcommand\LabHeader{
 	\begin{center}
-		\textbf{\labname}
+		\textbf{\LabTitle}
 	\end{center}
+	\ReportPages
 }
 
 \newcommand{\TemplateReminder}{
@@ -56,7 +133,7 @@
 
 \newcommand\QA[2]{
 	\begin{itemize}
-		\item \large{\em{#1}}\normalsize
+		\item \em{#1}
 			\begin{itemize}
 				\item #2
 			\end{itemize}

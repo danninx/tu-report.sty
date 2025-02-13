@@ -2,36 +2,72 @@
 \usepackage{tu-reports}
 
 % ---- Fill out the following: ---- %
-\renewcommand\authorname{FILL NAME}
-\renewcommand\authorid{FILL STUDENT ID}
-\renewcommand\theclass{FILL COURSE ID}
-\renewcommand\labname{FILL LAB NAME}
-\renewcommand\labgroup{FILL GROUP NUMBER}
-\renewcommand\labpartners{FILL GROUP PARTNERS}
-\renewcommand\labdate{FILL LAB DATE}
+\authorfirst{FIRST-NAME} 
+\authorlast{LAST-NAME}
+\authorid{STUDENT-ID}
+\theclass{COURSE ID-}{SECTION} 
+\labname{LAB NAME}
+\labgroup{GROUP NO.}
+\labpartners{Group partners}
+\labdate{LAB DATE}
+\leftextra{}
+\rightextra{}
 
 \begin{document} 
 
-\ReportPages
 \LabHeader
-\TemplateReminder
 
 \section*{Introduction}
-\lipsum[1]
+\lipsum[1-2]
 \section*{Materials}
-\lipsum[2]
+\lipsum[3-3]
 \section*{Procedure}
-\lipsum[3]
-\section*{Results and Calculations}
-\lipsum[4-6]
-\section*{Conclusion}
-\lipsum[7]
+\lipsum[4-5]
+\subsection*{Part A}
+\begin{figure}
+	\centering
+	\includegraphics[width=0.7\linewidth]{bird.jpg}
+	\caption{A bird.}
+\end{figure}
+\lipsum[10]
+\subsection*{Part B}
+\lipsum[11]
 
+\section*{Results and Calculations}
+\lipsum[6-6]
+\subsection*{Part A}
+
+\begin{align*}
+	A &= \pi r^2 \\
+	  &= \pi \frac{d}{2}^2
+\end{align*}
+
+\subsection*{Part B}
+
+\begin{table}
+	\centering
+	\begin{tabular}{|c|c|c|c|}
+		\hline
+		A & B & C & D \\
+		\hline
+		1 & 2 & 3 & 4 \\
+		\hline
+		5 & 6 & 7 & 8 \\
+		\hline
+		9 & 10 & 11 & 12 \\
+		\hline
+	\end{tabular}
+	\caption{Table for part B}
+\end{table}
+
+\section*{Conclusion}
+\lipsum[7-8]
 \pagebreak
+
 \section*{Q/A}
 
-\QA{This is a question?}{This is an answer}
+\QA{This is a question?}{This is an answer.}
+\QA{What is the meaning of life?}{The quick brown fox jumps over the lazy dog.}
+\QA{How should I respond to criticism?}{\lipsum[1]}
 
-\pagebreak
-	
 \end{document}
