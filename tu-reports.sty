@@ -7,9 +7,13 @@
 \usepackage[utf8]{inputenc}
 \usepackage{lipsum}
 \usepackage{listing}
+\usepackage{mathtools}
 \usepackage{microtype}
+\usepackage{multicol}
+\usepackage{multirow}
 \usepackage{titling}
 \usepackage{tcolorbox}
+\usepackage{textcomp, gensymb}
 
 \geometry{
 	a4paper,
@@ -38,14 +42,17 @@
 	\renewcommand{\LabTitle}{#1}
 }
 
-\newcommand{\labgroup}[1]{
+\newcommand{\labgroup}[2]{
 	\renewcommand{\LabGroupNo}{#1}
+	\renewcommand{\LabPartners}{#2}
 }
-\newcommand{\labpartners}[1]{
-	\renewcommand{\LabPartners}{#1}
-}
+
 \newcommand{\labdate}[1]{
 	\renewcommand{\LabDate}{#1}
+}
+
+\newcommand{\nolabgroup}{
+	\renewcommand{\LabGroupFormat}{}
 }
 
 \date{\today}
@@ -71,7 +78,7 @@
 
 \newcommand{\LabTitle}{FILL LAB NAME}
 
-\newcommand{\LabGroupFormat}{\LabGroupNo: \LabPartners}
+\newcommand{\LabGroupFormat}{\textbf{\LabGroupNo:} \LabPartners}
 \newcommand{\LabGroupNo}{FILL GROUP NUMBER}
 \newcommand{\LabPartners}{FILL GROUP PARTNERS}
 \newcommand{\LabDate}{FILL LAB DATE}
@@ -99,7 +106,7 @@
 	\setlength{\headheight}{58pt}
 	\fancyhf{}
 	\fancyhead[L]{\textbf{\CourseTitle} \\ \textbf{Lab Date:} \LabDate \\ \textbf{Report Date:} \thedate \LeftExtra}
-	\fancyhead[R]{\textbf{\AuthorName} \\ \textbf{Student ID:} \AuthorID \\ \textbf{Lab Group 3:} \LabPartners \RightExtra}
+	\fancyhead[R]{\textbf{\AuthorName} \\ \textbf{Student ID:} \AuthorID \\ \LabGroupFormat \RightExtra}
 }
 \fancypagestyle{normal}{
 	\setlength{\headheight}{0pt}
